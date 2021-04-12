@@ -1,0 +1,3 @@
+Pro tuto hudební databázi jsem použil relaèní datový model z první pololetí, 
+který mùžete vidìt v souboru hudba_wolf.mwb v programu mySQLWorkbench,
+kde mám zatím vytvoøené 3 tabulky: kapel, èlen a osoba.
