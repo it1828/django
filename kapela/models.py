@@ -5,12 +5,15 @@ from django.urls import reverse
 
 # Create your models here.
 
-
+def poster_path(instance, filename):
+    return "bands/"+ str(instance.id) + "/poster/"+ filename
 
 class Band(models.Model):
     band_name = models.CharField(max_length=40, verbose_name="Band name")
     genre = models.CharField(max_length=50, verbose_name="Genre")
     est_date = models.DateField(help_text="Please use the following format: <em>YYYY-MM-DD</em>.",verbose_name="Establishing date")
+    about = models.TextField(blank=True, null=True, verbose_name="About", max_length=500)
+    poster = models.ImageField(upload_to=poster_path, blank=True, null=True, verbose_name="Poster")
 
     class Meta:
         ordering = ["band_name"]

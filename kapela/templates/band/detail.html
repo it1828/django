@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Detail kapely{% endblock %}
+
+{% block content %}
+<h2>{{ band_detail.band_name }}</h2>
+<hr>
+<div class="row">
+    <div class="col-md-7">
+        <p><b>O kapele</b></p>
+        <p> {{band_detail.about}}
+        </p>
+        <p><b>Datum založení: </b> {{ band_detail.est_date}}</p>
+        <p><b>Hudební žánr: </b> {{ band_detail.genre}}</p>
+        <p><b>Členové: </b></p>
+        <ul>
+        {% for member in members %}
+
+            <li>{{ member.person_name }}</li>
+
+        {% endfor %}
+
+        </ul>
+    </div>
+    <div class="col-md-5">
+        {% if band_detail.poster %}
+            <img class="card-img-top" src="{{ band_detail.poster.url }}" alt="{{ band_detail.band_name }}">
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
+
