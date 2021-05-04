@@ -1,8 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Detail kapely{% endblock %}
+{% block title %}Detail hudebnika{% endblock %}
 
 {% block content %}
-
 <h2>{{ member_detail.person_name }}</h2>
+<hr>
+<div class="row">
+    <div class="col-md-7">
+        {% if member_detail.person_name.biography %}
+        <p><b>Životopis: </b>{{member_detail.person_name.biography}}</p>
+        {% endif %}
+        <p><b>Člen kapely: </b><b> {{member_detail.band}}</b></p>
+        <p><b>Nástroj: </b>{{member_detail.instrument}}</p>
+        <p><b>Členem od: </b> {{ member_detail.member_since}}</p>
+        {% if member_detail.member_to %}
+        <p><b>Členem do: </b> {{ member_detail.member_to}}</p>
+        {%endif%}
+    </div>
+    <div class="col-md-5">
+        {% if member_detail.poster %}
+            <img class="card-img-top" src="{{ member_detail.poster.url }}" alt="{{ member_detail.band }}">
+        {% endif %}
 
+    </div>
+
+</div>
 {% endblock %}
+

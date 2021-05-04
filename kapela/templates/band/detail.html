@@ -6,18 +6,19 @@
 <hr>
 <div class="row">
     <div class="col-md-7">
-        <p><b>O kapele</b></p>
+        {% if band_detail.about %}
+        <p><b>O kapele:</b></p>
+        {%endif%}
         <p> {{band_detail.about}}
         </p>
         <p><b>Datum založení: </b> {{ band_detail.est_date}}</p>
         <p><b>Hudební žánr: </b> {{ band_detail.genre}}</p>
         <p><b>Členové: </b></p>
         <ul>
-        {% for member in members %}
 
-            <li>{{ member.person_name }}</li>
-
-        {% endfor %}
+        {%for member in members%}
+            <a href="{% url 'member_detail' member.pk %}"><li>{{ member.person_name }}</li></a>
+            {%endfor%}
 
         </ul>
     </div>

@@ -44,15 +44,13 @@ class Member(models.Model):
     instrument = models.CharField(max_length=30, verbose_name="Instrument")
     member_since = models.DateField(verbose_name="Member since", help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
     member_to = models.DateField(blank=True, null=True, verbose_name="*Member to", help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
+    poster = models.ImageField(upload_to=poster_path, blank=True, null=True, verbose_name="Poster")
 
     class Meta:
         ordering = ["instrument"]
 
     def __str__(self):
         return self.instrument
-
-
-
 
 
 
