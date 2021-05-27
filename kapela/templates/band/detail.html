@@ -16,8 +16,10 @@
         <p><b>Členové: </b></p>
         <ul>
 
-        {%for member in members%}
-            <a href="{% url 'member_detail' member.pk %}"><li>{{ member.person_name }}</li></a>
+        {%for member in members %}
+            {% if member.band.pk == band_detail.pk %}
+                <a href="{% url 'member_detail' member.pk %}"><li>{{ member.person_name }}</li></a>
+            {% endif %}
             {%endfor%}
 
         </ul>
