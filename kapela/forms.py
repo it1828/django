@@ -9,7 +9,10 @@ class BandModelForm(ModelForm):
         fields = ['band_name', 'genre', 'est_date', 'about', 'poster']
 
 
+
+
 class MemberModelForm(ModelForm):
     class Meta:
         model = Member
         fields = '__all__'
+
