@@ -21,7 +21,7 @@
                 <a href="{% url 'member_detail' member.pk %}"><li>{{ member.person_name }}</li></a>
             {% endif %}
             {%endfor%}
-
+   <a href="{% url 'member-create' %}" class="btn btn-success">Přidat člena</a>
         </ul>
     </div>
     <div class="col-md-5">
@@ -30,6 +30,10 @@
         {% endif %}
     </div>
 
+</div>
+<div>
+    <a href="{% url 'band-update' band_detail.pk %}" class="btn btn-primary"><strong>Editovat</strong></a>
+    <a href="{% url 'band-delete' band_detail.pk %}" class="btn btn-danger"><strong>Smazat</strong></a>
 </div>
 {% endblock %}
 

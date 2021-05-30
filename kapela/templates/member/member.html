@@ -24,5 +24,9 @@
     </div>
 
 </div>
+<div>
+    <a href="{% url 'member-update' member_detail.pk %}" class="btn btn-primary"><strong>Editovat</strong></a>
+    <a href="{% url 'member-delete' member_detail.pk %}" class="btn btn-danger"><strong>Smazat</strong></a>
+</div>
 {% endblock %}
 

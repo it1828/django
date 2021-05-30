@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Smazání člena{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+
+        <h2 class="display-4 text-center">Smazání člena</h2>
+
+</div>
+<div class="row mt-5 mb-3">
+    <p>Určitě chcete smazat tohoto člena: {{ member }}?</p>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete.">
+    </form>
+</div>
+{% endblock %}

@@ -5,7 +5,8 @@
     <div class="col-sm-6">
         <div class="card">
             {% if band.poster %}
-            <img class="card-img-top" src="{{ band.poster.url }}" alt="{{ band.band_name }}">
+            <a href="{% url 'band_detail' band.pk %}"><img class="card-img-top" src="{{ band.poster.url }}" alt="{{ band.band_name }}"></a>
+
             {% endif %}
 
             <div class="card-body"> 
@@ -30,9 +31,17 @@
 </div>
 <br>
 <div class="row"> 
-    <div class="col-sm-12"> 
+    <div class="col-sm-8">
         <strong>Celkový počet zaregistrovaných kapel:</strong> {{ num_bands }}
-    </div> 
+    </div>
+
+    <div class="col-sm-4">
+        <a href="{% url 'band-create' %}" class="btn btn-success">Nová kapela</a>
+        <a href="{% url 'person-create' %}" class="btn btn-success">Nová osoba</a>
+    </div>
+
 </div>
+
+
 <br>
 {% endblock %} 
