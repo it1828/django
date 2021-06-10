@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
@@ -28,59 +29,67 @@ class MemberDetailView(DetailView):
     context_object_name = 'member_detail'
     template_name = 'member/member.html'
 
-class BandCreateView(CreateView):
+class BandCreateView(LoginRequiredMixin, PermissionRequiredMixin,CreateView):
     model = Band
     fields = ['band_name', 'genre', 'est_date', 'about', 'poster']
     template_name = 'kapela/band_bootstrap_form.html'
+    permission_required = 'kapela.add_band'
+
 
     def get_success_url(self):
         return reverse('band_detail', kwargs={'pk': self.object.pk})
 
 
 
-class BandUpdateView(UpdateView):
+class BandUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Band
     form_class = BandModelForm
     template_name = 'kapela/band_bootstrap_form.html'
+    permission_required = 'kapela.change_band'
 
     def get_success_url(self):
         return reverse('band_detail', kwargs={'pk': self.object.pk})
 
 
-class BandDeleteView(DeleteView):
+class BandDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Band
     success_url = reverse_lazy('index')
+    permission_required = 'kapela.delete_band'
 
 
 
-class MemberCreateView(CreateView):
+class MemberCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Member
     fields = '__all__'
     template_name = 'kapela/member_bootstrap_form.html'
+    permission_required = 'kapela.add_member'
 
     def get_success_url(self):
         return reverse('member_detail', kwargs={'pk': self.object.pk})
 
 
 
-class MemberUpdateView(UpdateView):
+class MemberUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Member
     form_class = MemberModelForm
     template_name = 'kapela/member_bootstrap_form.html'
+    permission_required = 'kapela.change_member'
 
     def get_success_url(self):
         return reverse('member_detail', kwargs={'pk': self.object.pk})
 
 
-class MemberDeleteView(DeleteView):
+class MemberDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Member
     success_url = reverse_lazy('index')
+    permission_required = 'kapela.delete_member'
 
 
 
-class PersonCreateView(CreateView):
+class PersonCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Person
     fields = '__all__'
     template_name = 'kapela/person_bootstrap_form.html'
+    permission_required = 'kapela.add_person'
 
     success_url = reverse_lazy('index')

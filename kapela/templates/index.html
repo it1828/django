@@ -36,8 +36,12 @@
     </div>
 
     <div class="col-sm-4">
-        <a href="{% url 'band-create' %}" class="btn btn-success">Nová kapela</a>
+        {% if perms.kapela.add_band %}
+        <a href="{% url 'band_create' %}" class="btn btn-success">Nová kapela</a>
+        {% endif %}
+        {% if perms.kapela.add_person %}
         <a href="{% url 'person-create' %}" class="btn btn-success">Nová osoba</a>
+        {% endif %}
     </div>
 
 </div>

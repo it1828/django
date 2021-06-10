@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('bands/<int:pk>/', views.BandDetailView.as_view(), name='band_detail'),
     path('member/<int:pk>/', views.MemberDetailView.as_view(), name='member_detail'),
-    path('band/create/', views.BandCreateView.as_view(), name='band-create'),
+    path('band/create/', views.BandCreateView.as_view(), name='band_create'),
     path('band/<int:pk>/update/', views.BandUpdateView.as_view(), name='band-update'),
     path('band/<int:pk>/delete/', views.BandDeleteView.as_view(), name='band-delete'),
 

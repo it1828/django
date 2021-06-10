@@ -25,8 +25,12 @@
 
 </div>
 <div>
-    <a href="{% url 'member-update' member_detail.pk %}" class="btn btn-primary"><strong>Editovat</strong></a>
-    <a href="{% url 'member-delete' member_detail.pk %}" class="btn btn-danger"><strong>Smazat</strong></a>
+    {% if perms.kapela.change_member %}
+        <a href="{% url 'member-update' member_detail.pk %}" class="btn btn-primary"><strong>Editovat</strong></a>
+    {% endif %}
+    {% if perms.kapela.delete_member %}
+        <a href="{% url 'member-delete' member_detail.pk %}" class="btn btn-danger"><strong>Smazat</strong></a>
+     {% endif %}
 </div>
 {% endblock %}
 
